@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.heart {
+  width: 200px;
+  height: 180px;
+  position: relative;
+  transform: rotate(-45deg);
+  background-color: red;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulse 2.5s infinite ease-in-out;
+  transition: transform 0.4s ease;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 180px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -100px;
+  left: 0;
+}
+
+.heart::after {
+  left: 100px;
+  top: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.05); }
+}
+
+.heart-sm {
+  position: absolute;
+  width: 20px;
+  height: 18px;
+  background-color: pink;
+  transform: rotate(-45deg);
+  opacity: 0.8;
+  animation: fall 5s linear forwards;
+}
+
+.heart-sm::before,
+.heart-sm::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 18px;
+  background-color: pink;
+  border-radius: 50%;
+}
+
+.heart-sm::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart-sm::after {
+  left: 10px;
+  top: 0;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+#birthday-message {
+  position: absolute;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 10;
+}
+
+#birthday-message.show {
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+.heart-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  position: absolute;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: none;
+  line-height: 1.2;
+  z-index: 2;
+}
